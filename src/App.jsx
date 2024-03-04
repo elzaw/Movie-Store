@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { LangProvider } from "./contexts/language";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,6 +42,9 @@ function App() {
             {/* <PrivateRoute path="/fav" element={<Favorites />} /> */}
           </BrowserRouter>
         </Provider>
+        <div>
+          <Toaster />
+        </div>
       </LangProvider>
     </div>
   );

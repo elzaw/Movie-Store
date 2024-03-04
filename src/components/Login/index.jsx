@@ -121,7 +121,7 @@ export default function BasicExample() {
   };
 
   return (
-    <section className="h-screen">
+    <section className="h-screen container mx-auto">
       <div className="h-full">
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
           <div className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
