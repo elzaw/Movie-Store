@@ -13,13 +13,14 @@ import { fetchMovies } from "../../store/slices/movies";
 
 const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  // const [totalPages, setTotalPages] = useState(0);
 
   const [searchQuery, setSearchQuery] = useState("");
 
   const popularMovies = useSelector((state) => state.movies.movies);
 
   const error = useSelector((state) => state.movies.error);
+  const totalPages = useSelector((state) => state.movies.totalPages);
 
   const dispatch = useDispatch();
 
@@ -50,10 +51,10 @@ const Movies = () => {
   };
 
   return (
-    <>
-      <div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mb-6">
         <TEInput
-          type="text"
+          type="search"
           id="exampleFormControlInput2"
           label="Search for movies"
           size="lg"
@@ -65,7 +66,10 @@ const Movies = () => {
       <div className="flex flex-wrap -mx-4">
         {error && <div>Error: {error}</div>}
         {popularMovies.map((movie) => (
-          <div key={movie.id} className="w-1/4 px-4 mb-8 relative">
+          <div
+            key={movie.id}
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 mb-8"
+          >
             <div className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <TERipple>
                 <div className="relative overflow-hidden bg-cover bg-no-repeat">
@@ -100,7 +104,9 @@ const Movies = () => {
                   {movie.title}
                 </h5>
                 <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                  {movie.overview}
+                  {movie.overview.length > 150
+                    ? `${movie.overview.substring(0, 150)}...`
+                    : movie.overview}
                 </p>
 
                 <TERipple>
@@ -136,7 +142,7 @@ const Movies = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

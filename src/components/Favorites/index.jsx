@@ -19,7 +19,7 @@ const Favorites = () => {
   };
 
   return (
-    <>
+    <div className="container mx-auto my-10">
       <div className="m-5">
         <p>Current Language: {language}</p>
         <button
@@ -43,7 +43,11 @@ const Favorites = () => {
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{movie.title}</div>
-                <p className="text-gray-700 text-base">{movie.overview}</p>
+                <p className="text-gray-700 text-base">
+                  {movie.overview.length > 150
+                    ? `${movie.overview.substring(0, 150)}...`
+                    : movie.overview}
+                </p>
               </div>
               <button
                 className="absolute top-4 right-4 z-50"
@@ -57,7 +61,7 @@ const Favorites = () => {
           <p>No favorites added yet.</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

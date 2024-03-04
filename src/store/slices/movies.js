@@ -14,6 +14,7 @@ export const fetchMovies = createAsyncThunk(
         params.query = searchQuery;
       }
       const response = await instance.get(url, { params });
+      console.log(response.data.total_pages);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -25,6 +26,7 @@ const initialState = {
   movies: [],
   loading: false,
   error: null,
+  totalPages: 0, // Add totalPages to the initial state
 };
 
 const moviesSlice = createSlice({
@@ -39,6 +41,7 @@ const moviesSlice = createSlice({
     builder.addCase(fetchMovies.fulfilled, (state, action) => {
       state.loading = false;
       state.movies = action.payload.results;
+      state.totalPages = action.payload.total_pages;
     });
     builder.addCase(fetchMovies.rejected, (state, action) => {
       state.loading = false;
