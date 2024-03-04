@@ -20,16 +20,6 @@ const Favorites = () => {
 
   return (
     <div className="container mx-auto my-10">
-      <div className="m-5">
-        <p>Current Language: {language}</p>
-        <button
-          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-1 px-2 rounded"
-          onClick={handleLanguageChange}
-        >
-          Change Language
-        </button>
-      </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {favorites.length > 0 ? (
           favorites.map((movie) => (
@@ -40,6 +30,7 @@ const Favorites = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
+                className="rounded"
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{movie.title}</div>
