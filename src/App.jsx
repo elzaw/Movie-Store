@@ -15,16 +15,8 @@ import { LangProvider } from "./contexts/language";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [language, setLanguage] = useState("en");
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
   return (
     <div>
       <LangProvider value={{ language, setLanguage }}>
@@ -39,12 +31,11 @@ function App() {
               <Route path="/movie/:id" element={<MovieDetails />} />
               <Route path="/fav" element={<Favorites />} />
             </Routes>
-            {/* <PrivateRoute path="/fav" element={<Favorites />} /> */}
+            <div>
+              <Toaster />
+            </div>
           </BrowserRouter>
         </Provider>
-        <div>
-          <Toaster />
-        </div>
       </LangProvider>
     </div>
   );

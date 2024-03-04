@@ -13,12 +13,8 @@ import { fetchMovies } from "../../store/slices/movies";
 
 const Movies = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  // const [totalPages, setTotalPages] = useState(0);
-
   const [searchQuery, setSearchQuery] = useState("");
-
   const popularMovies = useSelector((state) => state.movies.movies);
-
   const error = useSelector((state) => state.movies.error);
   const totalPages = useSelector((state) => state.movies.totalPages);
 

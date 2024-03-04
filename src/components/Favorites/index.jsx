@@ -2,17 +2,10 @@ import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BsTrash } from "react-icons/bs";
 import { removeFromFavorites } from "../../store/slices/favorites";
-import { langContext } from "../../contexts/language";
+
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
-
-  const { language, setLanguage } = useContext(langContext);
-
-  const handleLanguageChange = () => {
-    const newLanguage = language === "en" ? "ar" : "en";
-    setLanguage(newLanguage);
-  };
 
   const handleDelete = (movieId) => {
     dispatch(removeFromFavorites(movieId));
